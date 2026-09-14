@@ -1,0 +1,28 @@
+nav {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.navigation-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navigation-list a:hover,
+.navigation-list a:focus-visible {
+  text-decoration: underline;
+}
+
+main {
+  padding: 2rem;
+}
