@@ -1,28 +1,171 @@
-nav {
-  border-bottom: 1px solid #ddd;
+.site-frame {
+  width: min(760px, calc(100% - 2rem));
+  margin: 2rem auto;
+  border: 4px ridge #79dfff;
+  background: #000033;
+  box-shadow: 0 0 0 2px #ff4dff;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
   padding: 1rem;
+}
+
+.site-logo {
+  display: grid;
+  flex: 0 0 4rem;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: 3px outset #79dfff;
+  color: #ffff33;
+  font: bold 1.75rem Arial, sans-serif;
+  text-decoration: none;
+  text-shadow: 2px 2px #ff00cc;
+}
+
+.site-logo:focus-visible,
+.site-logo:hover {
+  background: #191970;
+}
+
+.site-title,
+.site-subtitle {
+  margin: 0;
+}
+
+.site-title {
+  color: #ffff33;
+  font: bold 1.6rem Arial, sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #cc00cc;
+}
+
+.site-subtitle {
+  margin-top: 0.35rem;
+  color: #66ffff;
+  font: 0.8rem Verdana, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+nav {
+  border-block: 2px groove #79dfff;
+  padding: 0.6rem 1rem;
+  background: #000019;
 }
 
 .navigation-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
+  font: bold 0.85rem Verdana, sans-serif;
+}
+
+.navigation-list li:not(:last-child)::after {
+  margin-inline: 0.65rem;
+  color: #fff;
+  content: '|';
 }
 
 .navigation-list a {
-  color: inherit;
-  text-decoration: none;
+  color: #66ccff;
 }
 
-.navigation-list a:hover,
-.navigation-list a:focus-visible {
-  text-decoration: underline;
+.navigation-list a:visited {
+  color: #ff66ff;
+}
+
+.navigation-list a[aria-current='page'] {
+  color: #ffff33;
+}
+
+.navigation-list a:focus-visible,
+.navigation-list a:hover {
+  color: #fff;
 }
 
 main {
+  min-height: 22rem;
   padding: 2rem;
+}
+
+main h1 {
+  color: #ffff33;
+  font-family: Arial, sans-serif;
+}
+
+.home-page {
+  max-width: 36rem;
+  margin-inline: auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.home-page h1 {
+  margin-top: 0;
+  text-align: center;
+  text-shadow: 2px 2px #990099;
+}
+
+.home-page a {
+  color: #66ffff;
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.home-page a:visited {
+  color: #ff66ff;
+}
+
+.mission-statement {
+  margin-block: 1.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px dashed #ffff33;
+  background: #080852;
+}
+
+.mission-statement h2 {
+  margin: 0 0 0.35rem;
+  color: #ff99ff;
+  font: bold 0.85rem Verdana, sans-serif;
+  text-transform: uppercase;
+}
+
+.mission-statement p {
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .site-frame {
+    width: calc(100% - 1rem);
+    margin-block: 0.75rem;
+  }
+
+  .site-header {
+    align-items: flex-start;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .navigation-list {
+    row-gap: 0.6rem;
+  }
+
+  main {
+    min-height: 0;
+    padding: 1.25rem;
+  }
 }
