@@ -142,6 +142,45 @@ main h1 {
   margin: 0;
 }
 
+.projects-page {
+  max-width: 40rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+.projects-page > h1 {
+  margin-top: 0;
+  text-align: center;
+  text-shadow: 2px 2px #990099;
+}
+
+.project-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.project-entry {
+  padding: 1rem;
+  border: 2px groove #79dfff;
+  background: #080852;
+}
+
+.project-entry h2 {
+  margin: 0;
+  color: #ff99ff;
+  font: bold 1.1rem Verdana, sans-serif;
+}
+
+.project-entry p {
+  margin-bottom: 0;
+}
+
+.project-role {
+  color: #66ffff;
+  font-family: Verdana, sans-serif;
+  font-size: 0.8rem;
+}
+
 @media (max-width: 540px) {
   .site-frame {
     width: calc(100% - 1rem);

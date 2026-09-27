@@ -10,6 +10,27 @@ const navigationItems = [
   { label: 'Contact', path: '/contact' },
 ]
 
+const projects = [
+  {
+    title: 'BOM',
+    description:
+      'A multiplayer physics game built in Unity and C# around a fully destructible environment. A custom ECS and an Odin server keep the simulation synchronized between players.',
+    role: 'Networking and ECS design on a team project.',
+  },
+  {
+    title: 'Switch Access Driver',
+    description:
+      'A cross-platform driver written in Odin for unpowered accessibility switches connected through a 3.5 mm audio jack. It detects switch events from bias pops, removing the need for a separate hardware interface.',
+    role: 'Independent design and development.',
+  },
+  {
+    title: 'UFC Performance Research',
+    description:
+      'An NLP research project investigating whether patterns in pre-fight interviews can provide a useful signal for predicting athlete performance.',
+    role: 'Independent research and development.',
+  },
+]
+
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname)
   const currentPage = navigationItems.find((item) => item.path === currentPath) ?? navigationItems[0]
@@ -74,6 +95,21 @@ function App() {
                 More about me &gt;&gt;
               </a>
             </p>
+          </section>
+        ) : currentPath === '/projects' ? (
+          <section className="projects-page">
+            <h1>Projects</h1>
+            <div className="project-list">
+              {projects.map((project) => (
+                <article className="project-entry" key={project.title}>
+                  <h2>{project.title}</h2>
+                  <p>{project.description}</p>
+                  <p className="project-role">
+                    <strong>Role:</strong> {project.role}
+                  </p>
+                </article>
+              ))}
+            </div>
           </section>
         ) : (
           <h1>{currentPage.label}</h1>
