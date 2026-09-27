@@ -48,6 +48,19 @@ function App() {
     setCurrentPath(path)
   }
 
+  const handleContactSubmit = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+
+    window.sessionStorage.setItem(
+      'contactSubmission',
+      JSON.stringify(Object.fromEntries(formData.entries())),
+    )
+    window.alert('Your message has been stored safely in this browser, where I will never see it.')
+    window.history.pushState({}, '', '/')
+    setCurrentPath('/')
+  }
+
   return (
     <div className="site-frame">
       <header className="site-header">
@@ -110,6 +123,82 @@ function App() {
                 </article>
               ))}
             </div>
+          </section>
+        ) : currentPath === '/education' ? (
+          <section className="education-page">
+            <h1>Education</h1>
+            <div className="education-list">
+              <article className="education-entry">
+                <h2>Game Programming</h2>
+                <p className="education-school">Centennial College</p>
+                <p>September 2025–Present</p>
+                <p>Three-year program, currently in progress.</p>
+              </article>
+
+              <article className="education-entry">
+                <h2>Independent Music Production</h2>
+                <p className="education-school">Seneca College</p>
+                <p>2021–2022</p>
+                <p>One year of study.</p>
+              </article>
+            </div>
+          </section>
+        ) : currentPath === '/services' ? (
+          <section className="services-page">
+            <h1>Services</h1>
+            <ul className="service-list">
+              <li>
+                <h2>Game Programming</h2>
+                <p>Gameplay and systems prototyping in Unity and C#.</p>
+              </li>
+              <li>
+                <h2>Networking and Systems</h2>
+                <p>Multiplayer synchronization, ECS design, and cross-platform utilities.</p>
+              </li>
+              <li>
+                <h2>Audio Software Prototyping</h2>
+                <p>Experimental tools involving audio input, signal analysis, and accessibility.</p>
+              </li>
+            </ul>
+          </section>
+        ) : currentPath === '/contact' ? (
+          <section className="contact-page">
+            <h1>Contact</h1>
+            <address className="contact-details">
+              <p>
+                Email: <a href="mailto:dblick@my.centennialcollege.ca">dblick@my.centennialcollege.ca</a>
+              </p>
+              <p>
+                GitHub: <a href="https://github.com/jblick1327">github.com/jblick1327</a>
+              </p>
+            </address>
+
+            <form className="contact-form" onSubmit={handleContactSubmit}>
+              <fieldset>
+                <legend>Send a message</legend>
+                <div className="form-field">
+                  <label htmlFor="first-name">First name</label>
+                  <input id="first-name" name="firstName" autoComplete="given-name" required />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="last-name">Last name</label>
+                  <input id="last-name" name="lastName" autoComplete="family-name" required />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" autoComplete="tel" />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="email">Email</label>
+                  <input id="email" name="email" type="email" autoComplete="email" required />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="message">Message</label>
+                  <textarea id="message" name="message" rows="6" required />
+                </div>
+                <button type="submit">Send message</button>
+              </fieldset>
+            </form>
           </section>
         ) : (
           <h1>{currentPage.label}</h1>
